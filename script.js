@@ -20,94 +20,107 @@ const productImages = {
   "Safed Chana": "images/IMG-20261106-WA0027.jpg"
 };
 
-const container = document.getElementById("products");
+const container = document.getElementById("product-list");
 
-products.forEach(product => {
-  const card = document.createElement("div");
-  card.className = "product-card";
+if (container && typeof products !== "undefined") {
+  products.forEach(product => {
+    const card = document.createElement("div");
+    card.className = "product-card";
 
-  const imageBox = document.createElement("div");
-  imageBox.className = "product-image";
+    const imageBox = document.createElement("div");
+    imageBox.className = "product-image";
 
-  const img = document.createElement("img");
-  img.src = productImages[product.name] || "";
-  img.alt = product.name;
+    const img = document.createElement("img");
+    img.src = productImages[product.name] || "";
+    img.alt = product.name;
+    img.loading = "lazy";
 
-  img.onerror = function() {
-    this.style.display = "none";
-    imageBox.textContent = "Picture not found";
-  };
+    img.onerror = function () {
+      this.style.display = "none";
+      imageBox.textContent = "Picture not available";
+    };
 
-  imageBox.appendChild(img);
+    imageBox.appendChild(img);
 
-  const heading = document.createElement("h3");
-  heading.textContent = product.name;
+    const heading = document.createElement("h3");
+    heading.textContent = product.name;
 
-  const priceList = document.createElement("div");
-  priceList.className = "price-list";
+    const priceList = document.createElement("div");
+    priceList.className = "price-list";
 
-  weights.forEach((weight, i) => {
-    const line = document.createElement("div");
-    line.textContent = weight + ": Rs. " + product.prices[i];
-    priceList.appendChild(line);
-  });
+    weights.forEach((weight, index) => {
+      const line = document.createElement("div");
+      line.textContent =
+        weight + " : Rs. " + product.prices[index];
+      priceList.appendChild(line);
+    });
 
-  const select = document.createElement("select");
-  select.className = "weight";
+    const select = document.createElement("select");
+    select.className = "weight";
+    select.setAttribute("aria-label", "Choose product weight");
 
-  weights.forEach((weight, i) => {
-    const option = document.createElement("option");
-    option.value = i;
-    option.textContent = weight + " - Rs. " + product.prices[i];
-    select.appendChild(option);
-  });
+    weights.forEach((weight, index) => {
+      const option = document.createElement("option");
+      option.value = index;
+      option.textContent =
+        weight + " - Rs. " + product.prices[index];
+      select.appendChild(option);
+    });
 
-  const quantity = document.createElement("input");
-  quantity.className = "quantity";
-  quantity.type = "number";
-  quantity.min = "1";
-  quantity.value = "1";
+    const quantity = document.createElement("input");
+    quantity.className = "quantity";
+    quantity.type = "number";
+    quantity.min = "1";
+    quantity.step = "1";
+    quantity.value = "1";
+    quantity.setAttribute("aria-label", "Quantity");
 
-  const button = document.createElement("a");
-  button.href = "#";
-  button.className = "order-btn";
-  button.textContent = "Order on WhatsApp";
+    const button = document.createElement("a");
+    button.href = "#";
+    button.className = "order-btn";
+    button.textContent = "ORDER NOW";
 
-  button.addEventListener("click", function(event) {
-    event.preventDefault();
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
 
-    const selected = Number(select.value);
-    const qty = Math.max(1, Number(quantity.value) || 1);
-    const price = product.prices[selected];
-    const subtotal = price * qty;
-    const delivery = subtotal >= 2000 ? 0 : 200;
-    const total = subtotal + delivery;
+      const selectedIndex = Number(select.value);
+      const qty = Math.max(
+        1,
+        Math.floor(Number(quantity.value) || 1)
+      );
 
-    const message =
-      "Assalam-o-Alaikum! D.J Dry Fruits\n" +
-      "Product: " + product.name + "\n" +
-      "Weight: " + weights[selected] + "\n" +
-      "Quantity: " + qty + "\n" +
-      "Price: Rs. " + price + "\n" +
-      "Subtotal: Rs. " + subtotal + "\n" +
-      "Delivery: " + (delivery === 0 ? "FREE" : "Rs. 200") + "\n" +
-      "Total: Rs. " + total;
+      const price = product.prices[selectedIndex];
+      const subtotal = price * qty;
+      const delivery = subtotal >= 2000 ? 0 : 200;
+      const total = subtotal + delivery;
 
-    window.open(
-      "https://wa.me/923198173538?text=" +
-      encodeURIComponent(message),
-      "_blank"
+      const message =
+        "Assalam-o-Alaikum! D.J Dry Fruits & Nimko\n\n" +
+        "Product: " + product.name + "\n" +
+        "Weight: " + weights[selectedIndex] + "\n" +
+        "Quantity: " + qty + "\n" +
+        "Price: Rs. " + price + "\n" +
+        "Subtotal: Rs. " + subtotal + "\n" +
+        "Delivery: " +
+        (delivery === 0 ? "FREE" : "Rs. 200") + "\n" +
+        "Total: Rs. " + total;
+
+      const whatsappURL =
+        "https://wa.me/923198173538?text=" +
+        encodeURIComponent(message);
+
+      window.open(whatsappURL, "_blank");
+    });
+
+    card.append(
+      imageBox,
+      heading,
+      priceList,
+      select,
+      quantity,
+      button
     );
+
+    container.appendChild(card);
   });
-
-  card.append(
-    imageBox,
-    heading,
-    priceList,
-    select,
-    quantity,
-    button
-  );
-
-  container.appendChild(card);
-});
+}
