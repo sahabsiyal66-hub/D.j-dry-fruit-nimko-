@@ -1,126 +1,406 @@
 
-const weights = ["125 Gram", "250 Gram", "500 Gram", "1 KG"];
+/* =====================================
+   D.J DRY FRUITS & NIMKO
+   ROYAL LUXURY WEBSITE DESIGN
+   ===================================== */
 
-const productImages = {
-  "Pista": "images/IMG-20261106-WA0019.jpg",
-  "Badam": "images/IMG-20261106-WA0021.jpg",
-  "Kaju": "images/IMG-20261106-WA0029.jpg",
-  "Akhrot": "images/IMG-20261106-WA0039.jpg",
-  "Anjeer": "images/IMG-20261106-WA0030.jpg",
-  "Green Magaz": "images/IMG-20261106-WA0022.jpg",
-  "Kishmish": "images/IMG-20261106-WA0020.jpg",
-  "Khubani": "images/IMG-20261106-WA0038.jpg",
-  "Rewari": "images/IMG-20261106-WA0028.jpg",
-  "Moong Phali": "images/IMG-20261106-WA0037.jpg",
-  "Nimko": "images/IMG-20261106-WA0034.jpg",
-  "Chocolate Moong Phali": "images/IMG-20261106-WA0033.jpg",
-  "Dal China": "images/IMG-20261106-WA0023.jpg",
-  "Dal Moong": "images/IMG-20261106-WA0032.jpg",
-  "Kala Chana": "images/IMG-20261106-WA0024.jpg",
-  "Safed Chana": "images/IMG-20261106-WA0027.jpg"
-};
+:root {
+  --cream: #f7f2e9;
+  --cream-dark: #eee4d3;
+  --brown: #382116;
+  --brown-light: #65432e;
+  --gold: #c49a55;
+  --gold-light: #e5c88d;
+  --white: #ffffff;
+  --text: #3e3025;
+  --shadow: 0 8px 25px rgba(56, 33, 22, 0.12);
+}
 
-const container = document.getElementById("product-list");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-if (container && typeof products !== "undefined") {
-  products.forEach(product => {
-    const card = document.createElement("div");
-    card.className = "product-card";
+html {
+  scroll-behavior: smooth;
+}
 
-    const imageBox = document.createElement("div");
-    imageBox.className = "product-image";
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+}
 
-    const img = document.createElement("img");
-    img.src = productImages[product.name] || "";
-    img.alt = product.name;
-    img.loading = "lazy";
+/* ROYAL BUSINESS HEADER */
 
-    img.onerror = function () {
-      this.style.display = "none";
-      imageBox.textContent = "Picture not available";
-    };
+header {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 65px 16px 58px;
 
-    imageBox.appendChild(img);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(35, 19, 11, 0.88),
+      rgba(83, 51, 28, 0.82)
+    ),
+    url("images/IMG-20261106-WA0021.jpg");
 
-    const heading = document.createElement("h3");
-    heading.textContent = product.name;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-    const priceList = document.createElement("div");
-    priceList.className = "price-list";
+  color: var(--white);
+  border-bottom: 5px solid var(--gold);
+  box-shadow: var(--shadow);
+}
 
-    weights.forEach((weight, index) => {
-      const line = document.createElement("div");
-      line.textContent =
-        weight + " : Rs. " + product.prices[index];
-      priceList.appendChild(line);
-    });
+header h1 {
+  color: var(--gold-light);
+  font-size: clamp(27px, 5vw, 43px);
+  font-weight: bold;
+  letter-spacing: 2px;
+  line-height: 1.3;
+  margin-bottom: 15px;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.65);
+}
 
-    const select = document.createElement("select");
-    select.className = "weight";
-    select.setAttribute("aria-label", "Choose product weight");
+header p {
+  color: #fff8e9;
+  font-size: 16px;
+  margin: 9px 0;
+  letter-spacing: 0.5px;
+}
 
-    weights.forEach((weight, index) => {
-      const option = document.createElement("option");
-      option.value = index;
-      option.textContent =
-        weight + " - Rs. " + product.prices[index];
-      select.appendChild(option);
-    });
+header p:first-of-type {
+  color: var(--gold-light);
+  font-size: 17px;
+  font-weight: bold;
+}
 
-    const quantity = document.createElement("input");
-    quantity.className = "quantity";
-    quantity.type = "number";
-    quantity.min = "1";
-    quantity.step = "1";
-    quantity.value = "1";
-    quantity.setAttribute("aria-label", "Quantity");
+header p:nth-of-type(2) {
+  margin-top: 20px;
+  font-size: 18px;
+}
 
-    const button = document.createElement("a");
-    button.href = "#";
-    button.className = "order-btn";
-    button.textContent = "ORDER NOW";
+header p:last-of-type {
+  font-size: 15px;
+  color: #f2dfbd;
+}
 
-    button.addEventListener("click", function (event) {
-      event.preventDefault();
+/* DELIVERY SECTION */
 
-      const selectedIndex = Number(select.value);
-      const qty = Math.max(
-        1,
-        Math.floor(Number(quantity.value) || 1)
-      );
+.delivery {
+  background:
+    linear-gradient(135deg, #fffaf1, #eee1c9);
 
-      const price = product.prices[selectedIndex];
-      const subtotal = price * qty;
-      const delivery = subtotal >= 2000 ? 0 : 200;
-      const total = subtotal + delivery;
+  text-align: center;
+  padding: 28px 15px;
+  color: var(--brown);
+  border-bottom: 2px solid var(--gold);
+  box-shadow: 0 4px 14px rgba(56,33,22,0.07);
+}
 
-      const message =
-        "Assalam-o-Alaikum! D.J Dry Fruits & Nimko\n\n" +
-        "Product: " + product.name + "\n" +
-        "Weight: " + weights[selectedIndex] + "\n" +
-        "Quantity: " + qty + "\n" +
-        "Price: Rs. " + price + "\n" +
-        "Subtotal: Rs. " + subtotal + "\n" +
-        "Delivery: " +
-        (delivery === 0 ? "FREE" : "Rs. 200") + "\n" +
-        "Total: Rs. " + total;
+.delivery h3 {
+  color: var(--brown);
+  font-size: 22px;
+  margin-bottom: 9px;
+}
 
-      const whatsappURL =
-        "https://wa.me/923198173538?text=" +
-        encodeURIComponent(message);
+.delivery p {
+  color: var(--brown-light);
+  font-size: 15px;
+  margin: 7px 0;
+}
 
-      window.open(whatsappURL, "_blank");
-    });
+.delivery h2 {
+  display: inline-block;
+  margin-top: 13px;
+  padding: 10px 18px;
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  background: #fff8e9;
+  color: #80551f;
+  font-size: 17px;
+  font-weight: bold;
+}
 
-    card.append(
-      imageBox,
-      heading,
-      priceList,
-      select,
-      quantity,
-      button
-    );
+/* MAIN CONTENT */
 
-    container.appendChild(card);
-  });
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 38px 16px 50px;
+}
+
+main > h2 {
+  text-align: center;
+  color: var(--brown);
+  font-size: clamp(25px, 4vw, 34px);
+  margin-bottom: 30px;
+  padding-bottom: 13px;
+  position: relative;
+}
+
+main > h2::after {
+  content: "";
+  display: block;
+  width: 105px;
+  height: 3px;
+  margin: 12px auto 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--gold),
+    transparent
+  );
+  border-radius: 5px;
+}
+
+/* PRODUCT GRID */
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+/* PRODUCT CARDS */
+
+.product-card {
+  background: var(--white);
+  border: 1px solid #e5d4b7;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 15px;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 13px 30px rgba(56,33,22,0.18);
+}
+
+/* PRODUCT PHOTOS */
+
+.product-image {
+  width: 100%;
+  height: 165px;
+  background: var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--brown-light);
+  font-size: 13px;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.04);
+}
+
+/* PRODUCT NAME */
+
+.product-card h3 {
+  color: var(--brown);
+  font-size: 18px;
+  font-weight: bold;
+  margin: 13px 5px 9px;
+  padding: 0 5px;
+}
+
+/* PRODUCT PRICE LIST */
+
+.price-list {
+  padding: 0 8px;
+  color: #574333;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.price-list div {
+  border-bottom: 1px solid #f0e8dc;
+  padding: 2px 0;
+}
+
+.price-list div:last-child {
+  border-bottom: none;
+  color: #80551f;
+  font-weight: bold;
+}
+
+/* WEIGHT AND QUANTITY */
+
+select,
+input {
+  width: calc(100% - 24px);
+  min-height: 42px;
+  padding: 10px;
+  margin: 7px 3px;
+  border: 1px solid #c9a66e;
+  border-radius: 8px;
+  background: #fffdf9;
+  color: var(--brown);
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  outline: none;
+}
+
+select:focus,
+input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(196,154,85,0.18);
+}
+
+input[type="number"] {
+  text-align: center;
+}
+
+/* ROYAL ORDER BUTTON */
+
+.order-btn {
+  display: block;
+  background: linear-gradient(
+    135deg,
+    #65401f,
+    #a77937
+  );
+  color: #fffaf0;
+  text-decoration: none;
+  padding: 12px 8px;
+  margin: 10px 12px 2px;
+  border: 1px solid #d6b36e;
+  border-radius: 9px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  box-shadow: 0 4px 10px rgba(56,33,22,0.17);
+  transition: all 0.25s ease;
+}
+
+.order-btn:hover {
+  background: linear-gradient(
+    135deg,
+    #382116,
+    #80551f
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 7px 15px rgba(56,33,22,0.25);
+}
+
+/* FOOTER */
+
+footer {
+  background:
+    linear-gradient(135deg, #28170f, #51321e);
+  color: #fff7e9;
+  text-align: center;
+  padding: 32px 15px;
+  line-height: 2;
+  border-top: 4px solid var(--gold);
+}
+
+footer h3 {
+  color: var(--gold-light);
+  font-size: 24px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+footer p {
+  color: #f5e8d2;
+  font-size: 14px;
+}
+
+/* TABLET AND DESKTOP */
+
+@media (min-width: 700px) {
+  .products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .product-image {
+    height: 205px;
+  }
+
+  .product-card h3 {
+    font-size: 20px;
+  }
+
+  .price-list {
+    font-size: 14px;
+  }
+
+  header {
+    padding: 85px 20px 75px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .products {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  main {
+    padding-top: 48px;
+  }
+}
+
+/* SMALL MOBILE PHONES */
+
+@media (max-width: 380px) {
+  .products {
+    gap: 10px;
+  }
+
+  .product-image {
+    height: 135px;
+  }
+
+  .product-card h3 {
+    font-size: 16px;
+  }
+
+  .price-list {
+    font-size: 12px;
+  }
+
+  header h1 {
+    font-size: 25px;
+    letter-spacing: 1px;
+  }
+
+  .delivery h2 {
+    font-size: 14px;
+  }
+}
+
+/* REMOVE UNWANTED BLUE LINK COLORS */
+
+a,
+a:visited {
+  color: inherit;
+}
+
+::selection {
+  background: #dfc18b;
+  color: #382116;
 }
