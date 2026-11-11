@@ -5,409 +5,163 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #faf7f1;
-  color: #493525;
+  font-family: Arial, sans-serif;
+  background: #f5f0e7;
+  color: #493326;
 }
 
-/* TOP BAR */
-.top-bar {
-  background: #68452e;
-  color: #fff2d9;
+/* Header */
+header {
+  background: #f5f0e7;
+  color: #5b3828;
   text-align: center;
-  padding: 9px;
-  font-size: 12px;
-  letter-spacing: 1px;
+  padding: 25px 12px;
 }
 
-/* HEADER */
-.header {
-  background: #fff;
-  padding: 15px 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 15px;
-  box-shadow: 0 3px 12px #49352512;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-logo {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  border: 2px solid #b88a4b;
-  color: #8b5d35;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Georgia, serif;
-  font-size: 23px;
-  font-weight: bold;
-}
-
-.brand-name h1 {
-  font-family: Georgia, serif;
-  color: #68452e;
-  font-size: clamp(17px, 3vw, 25px);
-}
-
-.brand-name h1 span {
-  color: #b38a4e;
-}
-
-.brand-name p {
-  color: #9a7954;
-  font-size: 9px;
-  letter-spacing: 3px;
-  margin-top: 5px;
-}
-
-.navigation {
-  display: flex;
-  gap: 22px;
-  flex-wrap: wrap;
-}
-
-.navigation a {
-  color: #68452e;
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.navigation a:hover {
-  color: #b58a4e;
-}
-
-/* HERO */
-.hero {
-  min-height: 320px;
-  background: linear-gradient(110deg, #f0e4d1, #fbf7ef);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 45px 9%;
-  overflow: hidden;
-}
-
-.hero-content {
-  max-width: 600px;
-}
-
-.hero-small {
-  color: #a47b49;
-  font-size: 12px;
-  letter-spacing: 3px;
-  font-weight: bold;
-}
-
-.hero h2 {
-  color: #63432c;
-  font-family: Georgia, serif;
-  font-size: clamp(36px, 6vw, 58px);
-  line-height: 1.1;
-  margin: 15px 0;
-}
-
-.hero h2 span {
-  color: #ad8248;
-}
-
-.hero-text {
-  color: #80684e;
-  font-size: 15px;
-}
-
-.hero-button {
-  display: inline-block;
-  margin-top: 24px;
-  padding: 13px 28px;
-  border-radius: 4px;
-  background: #744b30;
-  color: white;
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.hero-button:hover {
-  background: #a77b45;
-}
-
-.hero-decoration {
-  font-size: clamp(90px, 17vw, 170px);
-  filter: drop-shadow(0 12px 10px #7d573533);
-}
-
-/* DELIVERY */
-.delivery {
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  padding: 20px;
-  border-bottom: 1px solid #eadfce;
-}
-
-.delivery-box {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.delivery-icon {
+/* Sirf naam ke peeche photo */
+header h1 {
+  background-image:
+    linear-gradient(rgba(45, 25, 14, 0.48), rgba(45, 25, 14, 0.48)),
+    url("images/IMG-20261106-WA0021.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  text-shadow: 2px 2px 5px #24150d;
+  padding: 38px 10px;
+  border-radius: 12px;
   font-size: 28px;
+  margin-bottom: 15px;
 }
 
-.delivery h3 {
-  color: #69472f;
+header p {
+  margin: 9px;
   font-size: 15px;
-  margin-bottom: 4px;
+  color: #5b3828;
 }
 
-.delivery p {
-  color: #806b56;
-  font-size: 12px;
-}
-
-.free-delivery {
-  color: #477342;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-/* PRODUCTS */
-main {
-  max-width: 1250px;
-  margin: auto;
-  padding: 48px 18px;
-}
-
-.section-heading {
+/* Delivery */
+.delivery {
+  background: #fffaf2;
   text-align: center;
-  margin-bottom: 30px;
+  padding: 20px 10px;
+  color: #5b3828;
+  border-bottom: 2px solid #d5bd94;
 }
 
-.section-heading > p {
-  color: #b08a54;
-  font-size: 11px;
-  letter-spacing: 3px;
-  font-weight: bold;
-  margin-bottom: 9px;
+.delivery h2 {
+  font-size: 19px;
+  margin-top: 10px;
+  color: #5b3828;
 }
 
-.section-heading h2 {
-  font-family: Georgia, serif;
-  font-size: 34px;
-  color: #68452e;
+/* Products section */
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 25px 15px;
 }
 
-.section-heading span {
-  display: block;
-  color: #91785e;
-  font-size: 13px;
-  margin-top: 8px;
+main > h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #5b3828;
 }
 
 .products {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
 }
 
-/* PRODUCT CARDS */
 .product-card {
-  background: #fff;
-  border: 1px solid #eadfce;
-  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e5d6bd;
+  border-radius: 14px;
   overflow: hidden;
   text-align: center;
   padding-bottom: 15px;
-  box-shadow: 0 4px 15px #60452a0c;
-  transition: .25s;
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 9px 22px #60452a20;
+  box-shadow: 0 3px 12px #00000012;
 }
 
 .product-image {
   width: 100%;
-  height: 175px;
-  background: #f1e8d9;
-  overflow: hidden;
+  height: 155px;
+  background: #f1e7d6;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #80664c;
-  font-size: 12px;
+  color: #80603a;
+  font-size: 14px;
+  overflow: hidden;
 }
 
 .product-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 .product-card h3 {
-  color: #68452e;
-  font-family: Georgia, serif;
+  color: #5b3828;
+  margin: 13px 5px;
   font-size: 18px;
-  margin: 14px 5px 10px;
 }
 
 .price-list {
-  background: #faf6ef;
-  color: #765b3e;
-  margin: 0 10px 10px;
-  padding: 9px;
-  border-radius: 5px;
-  font-size: 12px;
-  line-height: 1.9;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 2;
+  color: #493326;
 }
 
-.weight,
-.quantity {
-  background: #fff;
-  border: 1px solid #dfd0bb;
-  border-radius: 5px;
-  color: #61452e;
-  padding: 10px 6px;
-  margin: 5px 0;
-  font-size: 12px;
-}
-
-.weight {
-  width: calc(100% - 20px);
-}
-
-.quantity {
-  width: 65px;
-  text-align: center;
+select,
+input {
+  padding: 10px;
+  margin: 7px 3px;
+  border: 1px solid #c9b18f;
+  border-radius: 7px;
+  max-width: 90%;
+  background: #fffdf9;
 }
 
 .order-btn {
   display: block;
-  background: #704a30;
-  color: #fff;
-  margin: 10px 10px 0;
-  padding: 12px 8px;
+  background: #5b3828;
+  color: white;
   text-decoration: none;
-  border-radius: 5px;
-  font-size: 12px;
+  padding: 12px;
+  margin: 10px;
+  border-radius: 8px;
   font-weight: bold;
-  letter-spacing: 1px;
-  transition: .2s;
 }
 
 .order-btn:hover {
-  background: #a47a45;
+  background: #a77d45;
 }
 
-/* FOOTER */
-.footer {
-  background: #68452e;
-  color: #f8edda;
+/* Footer */
+footer {
+  background: #5b3828;
+  color: white;
   text-align: center;
-  padding: 32px 12px;
+  padding: 25px 10px;
+  line-height: 2;
 }
 
-.footer-logo {
-  font-family: Georgia, serif;
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.footer-logo span {
-  color: #e5c17d;
-}
-
-.footer p {
-  font-size: 13px;
-  margin: 9px 0;
-}
-
-.location {
-  color: #f1d39b;
-}
-
-.footer-divider {
-  width: 65px;
-  height: 1px;
-  background: #d6ad60;
-  margin: 18px auto;
-}
-
-.copyright {
-  color: #e4d4bd;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-  .header {
-    justify-content: center;
-    text-align: center;
-  }
-
-  .navigation {
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .hero {
-    min-height: 260px;
-    padding: 35px 18px;
-  }
-
-  .hero-decoration {
-    font-size: 75px;
-  }
-
-  .delivery {
-    gap: 15px;
-  }
-
-  .products {
-    gap: 12px;
-  }
-
-  .product-image {
-    height: 135px;
-  }
-
-  .product-card h3 {
-    font-size: 15px;
-  }
-}
-
-/* DESKTOP */
+/* Mobile and desktop */
 @media (min-width: 700px) {
   .products {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 22px;
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .product-image {
-    height: 210px;
+    height: 190px;
+  }
+
+  header h1 {
+    font-size: 36px;
+    padding: 55px 10px;
   }
 }
