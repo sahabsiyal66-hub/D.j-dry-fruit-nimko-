@@ -23,6 +23,8 @@ const productImages = {
 const container = document.getElementById("product-list");
 
 if (container && typeof products !== "undefined") {
+  container.innerHTML = "";
+
   products.forEach(product => {
     const card = document.createElement("div");
     card.className = "product-card";
@@ -57,8 +59,7 @@ if (container && typeof products !== "undefined") {
     });
 
     const select = document.createElement("select");
-    select.className = "weight";
-    select.setAttribute("aria-label", "Choose product weight");
+    select.setAttribute("aria-label", "Choose weight");
 
     weights.forEach((weight, index) => {
       const option = document.createElement("option");
@@ -70,7 +71,6 @@ if (container && typeof products !== "undefined") {
     });
 
     const quantity = document.createElement("input");
-    quantity.className = "quantity";
     quantity.type = "number";
     quantity.min = "1";
     quantity.step = "1";
@@ -103,5 +103,5 @@ if (container && typeof products !== "undefined") {
 
     container.appendChild(card);
   });
-    }
-         
+                   }
+      
