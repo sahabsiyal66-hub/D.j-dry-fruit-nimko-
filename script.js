@@ -3,7 +3,7 @@ const weights = ["125 Gram", "250 Gram", "500 Gram", "1 KG"];
 
 const productImages = {
   "Pista": "images/IMG-20261106-WA0019.jpg",
-  "Badam": "images/IMG20161106-wa0021.jpg",
+  "Badam": "images/IMG-20261106-WA0021.jpg",
   "Kaju": "images/IMG-20261106-WA0029.jpg",
   "Akhrot": "images/IMG-20261106-WA0039.jpg",
   "Anjeer": "images/IMG-20261106-WA0030.jpg",
