@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://djdryfruitnimko.vercel.app/sitemap.xml
